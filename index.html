@@ -61,7 +61,7 @@
 
       <hr class="mb-8 text-gray-300" />
 
-      <!-- Available Jobs Header -->
+      <!-- Header -->
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-lg font-semibold">Available Jobs</h2>
         <span id="jobCount" class="text-sm text-gray-500">0 jobs</span>
@@ -91,9 +91,15 @@
         </button>
       </div>
 
-      <!-- Jobs + Empty Wrapper -->
-      <div class="relative min-h-[350px]">
-        <div id="jobContainer" class="space-y-6"></div>
+      <!-- Jobs Wrapper -->
+      <div
+        class="relative min-h-[350px] transition-opacity duration-300"
+        id="jobsWrapper"
+      >
+        <div
+          id="jobContainer"
+          class="space-y-6 transition-opacity duration-300 opacity-100"
+        ></div>
 
         <div
           id="emptyState"
