@@ -83,9 +83,7 @@ let jobs = [
   },
 ];
 
-/* ================================
-   DOM
-================================ */
+// DOM ELEMENTS
 
 const jobContainer = document.getElementById("jobContainer");
 const emptyState = document.getElementById("emptyState");
