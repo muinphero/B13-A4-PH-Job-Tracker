@@ -182,3 +182,24 @@ function renderJobs() {
 
   updateDashboard();
 }
+
+// UPDATE STATUS
+
+function updateStatus(id, newStatus) {
+  let job = jobs.find(function (job) {
+    return job.id === id;
+  });
+
+  job.status = newStatus;
+  renderJobs();
+}
+
+// DELETE JOB
+
+function deleteJob(id) {
+  jobs = jobs.filter(function (job) {
+    return job.id !== id;
+  });
+
+  renderJobs();
+}
