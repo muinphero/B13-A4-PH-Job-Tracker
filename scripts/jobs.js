@@ -84,3 +84,20 @@ let jobs = [
     status: "All",
   },
 ];
+
+// DOM ELEMENTS
+
+const jobContainer = document.getElementById("jobContainer");
+const emptyState = document.getElementById("emptyState");
+
+const totalCount = document.getElementById("totalCount");
+const interviewCount = document.getElementById("interviewCount");
+const rejectedCount = document.getElementById("rejectedCount");
+
+const jobCount = document.getElementById("jobCount");
+
+const allTab = document.getElementById("allTab");
+const interviewTab = document.getElementById("interviewTab");
+const rejectedTab = document.getElementById("rejectedTab");
+
+let currentTab = "All";
