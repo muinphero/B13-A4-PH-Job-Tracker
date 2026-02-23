@@ -213,7 +213,13 @@ jobContainer.addEventListener("click", function (event) {
 // TOGGLE STATUS
 
 function toggleStatus(id, newStatus) {
-  let job = jobs.find((j) => j.id === id);
+  var job = jobs.find(function (item) {
+    return item.id === id;
+  });
+
+  if (!job) {
+    return;
+  }
 
   if (job.status === newStatus) {
     job.status = "All";
@@ -227,7 +233,10 @@ function toggleStatus(id, newStatus) {
 // DELETE JOB
 
 function deleteJob(id) {
-  jobs = jobs.filter((j) => j.id !== id);
+  jobs = jobs.filter(function (item) {
+    return item.id !== id;
+  });
+
   renderJobs();
 }
 
@@ -236,8 +245,13 @@ function deleteJob(id) {
 function updateDashboard() {
   totalCount.innerText = jobs.length;
 
-  let interviewJobs = jobs.filter((j) => j.status === "Interview");
-  let rejectedJobs = jobs.filter((j) => j.status === "Rejected");
+  var interviewJobs = jobs.filter(function (item) {
+    return item.status === "Interview";
+  });
+
+  var rejectedJobs = jobs.filter(function (item) {
+    return item.status === "Rejected";
+  });
 
   interviewCount.innerText = interviewJobs.length;
   rejectedCount.innerText = rejectedJobs.length;
