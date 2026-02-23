@@ -141,7 +141,7 @@ function renderJobs() {
     card.innerHTML = `
       <button onclick="deleteJob(${job.id})"
         class="absolute top-5 right-5 text-gray-400 hover:text-gray-600">
-        <img src="assets/delete.svg" class="w-5 h-5"/>
+        <img src="assets/delete.svg" class="w-10 h-10"/>
       </button>
 
       <h3 class="font-semibold text-lg">
@@ -203,3 +203,65 @@ function deleteJob(id) {
 
   renderJobs();
 }
+
+// DASHBOARD LOGIC
+
+function updateDashboard() {
+  totalCount.innerText = jobs.length;
+
+  let interviewJobs = jobs.filter(function (job) {
+    return job.status === "Interview";
+  });
+
+  let rejectedJobs = jobs.filter(function (job) {
+    return job.status === "Rejected";
+  });
+
+  interviewCount.innerText = interviewJobs.length;
+  rejectedCount.innerText = rejectedJobs.length;
+
+  if (currentTab === "All") {
+    jobCount.innerText = jobs.length + " jobs";
+  } else if (currentTab === "Interview") {
+    jobCount.innerText = interviewJobs.length + " jobs";
+  } else {
+    jobCount.innerText = rejectedJobs.length + " jobs";
+  }
+}
+
+// TAB LOGIC
+
+function setActiveTab(activeButton) {
+  allTab.classList.remove("bg-blue-600", "text-white");
+  interviewTab.classList.remove("bg-blue-600", "text-white");
+  rejectedTab.classList.remove("bg-blue-600", "text-white");
+
+  allTab.classList.add("bg-gray-200", "text-gray-600");
+  interviewTab.classList.add("bg-gray-200", "text-gray-600");
+  rejectedTab.classList.add("bg-gray-200", "text-gray-600");
+
+  activeButton.classList.remove("bg-gray-200", "text-gray-600");
+  activeButton.classList.add("bg-blue-600", "text-white");
+}
+
+allTab.addEventListener("click", function () {
+  currentTab = "All";
+  setActiveTab(allTab);
+  renderJobs();
+});
+
+interviewTab.addEventListener("click", function () {
+  currentTab = "Interview";
+  setActiveTab(interviewTab);
+  renderJobs();
+});
+
+rejectedTab.addEventListener("click", function () {
+  currentTab = "Rejected";
+  setActiveTab(rejectedTab);
+  renderJobs();
+});
+
+// INITIAL RENDER
+
+renderJobs();
